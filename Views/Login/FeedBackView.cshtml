@@ -1,0 +1,43 @@
+﻿@model IEnumerable<FoodDonation.Models.FeedBack>
+
+
+@{
+    ViewData["Title"] = "FeedBackView";
+}
+<body  style="background-image:linear-gradient(to right, #005aa7, #fffde4)">
+<h1 style="text-align:center">FeedBackView</h1>
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Q1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Q2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Q3)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in ViewBag.Msg) {
+        <tr>
+            <td>
+                @item.Q1
+            </td>
+            <td>
+                @item.Q2
+            </td>
+            <td>
+                @item.Q3
+            </td>
+           
+        </tr>
+}
+    </tbody>
+</table>
+</body>

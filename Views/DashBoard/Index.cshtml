@@ -1,0 +1,194 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@using Microsoft.AspNetCore.Http
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+@{
+
+       try
+       {
+           var Role= HttpContextAccessor.HttpContext.Session.GetInt32("Role");
+              if(Role==1)
+              {
+                <h1>ADMIN</h1>
+                
+<body style="background-image:linear-gradient(to right, #005aa7, #fffde4)">
+                <div class="container">
+
+                    <a class="btn btn-primary" href="~/DashBoard/FoodRequest" >Raise_Food_Request</a>
+
+                    <a class="btn btn-primary" href="~/DashBoard/AdminMsg" style="margin-left:5%">Message</a>
+
+                    <a class="btn btn-warning" href="~/DashBoard/Password"style="margin-left:5%" >Reset Password</a>
+
+                    <a class="btn btn-warning" href="~/Login/FeedBackView"style="margin-left:5%" >View_FeedBack</a>
+
+                         </div>   
+
+                </body>
+
+              }   
+              else if(Role==101)
+              {
+                
+                <h2>Welcome @ViewBag.name</h2>
+                <body  style="background-image:linear-gradient(to right, #64b3f4, #c2e59c)">
+                <div class="container">
+
+                    <a class="btn btn-success" href="~/DashBoard/Donate" >Raise_Request_To_Donation</a>
+                          
+                    <a class="btn btn-warning" href="~/DashBoard/FoodRequest" style="margin-left:5%" >Raise_Food_Request</a>
+                    
+                    <a class="btn btn-primary" href="~/DashBoard/AdminMsgView"style="margin-left:5%" >View_Message</a>
+
+                    <a class="btn btn-warning" href="~/DashBoard/Password"style="margin-left:5%" >Reset Password</a>
+
+                    <a class="btn btn-success" href="~/Login/FeedBack"style="margin-left:5%" >FeedBack</a>
+                    
+                    <br>
+                     <br>
+                     
+                     
+                     
+                     
+                                         
+                     <div class="container">
+                     <div class="row">
+                     <div class="col-sm">
+                     <h4>Why Donation?</h4>
+                     <hr>
+                     Donation of regular meals to the needy…
+Around the globe ‘World Hunger Day’ is marked on May 28 and the stark reality is that for one-fourth of Indians, 
+from the poor, underprivileged, elderly and homeless sections of society, every day is a hunger day with no means 
+for adequate food or nutrition. Hunger leads to malnutrition which in turn leaves people susceptible to diseases. 
+The situation is particularly poignant in respect of children considering the fact that half of all kids younger 
+than three years old in India weigh too little for their age.
+
+While eradication of poverty remains the long-term goal, in the interim the short-term goal would be to harness 
+the resources of well-to-do Indians and feed the multitudes so that no adult or child goes to bed hungry. The
+corporate sector, as a part of their CSR initiatives, is doing its bit but much more needs to be done by 
+them as well as by NGOs and individuals.
+
+In order to serve as an inspiration, we present below in 'Whom Can You Contact' section work being done in various 
+parts of India by organizations and good-hearted individuals to feed the poor, needy, the underprivileged, the elderly
+and the homeless.
+
+Go ahead and donate food in your city…
+
+Many of us are pricked by the contrast between our own easy spending and the widespread deprivation around us, but have
+no idea how to help. You can move from quiet guilt to effective action by helping to combat hunger among deserving people.
+
+Either on your own or by forming a team of like-minded people you can arrange to cook simple meals and distribute them to
+the deneedy in your city. You can replicate similar work being done as described in 'Whom Can You Contact?' section below. 
+For guidance, you can even talk to the do-gooders whose phone numbers are listed.
+
+If a group is already active in your city, you can spare some time for the cause and join them as a volunteer. If that is 
+not possible you can consider donating them needed foodstuffs. Last but not the least, every person likes a pat on his back 
+and you should applaud the Good Samaritans for their selfless work.
+                     </div>
+                      <div class="col-sm">
+                       <h4>About Us</h4>
+                       <hr>
+                    The issue of malnutrition is of major concern for countries across the world. While it is a universal problem
+                    , children and women living in poverty are the worst affected by it. 
+
+        Due to the pandemic as a lot of people lost their means of livelihood and were further pushed into poverty, it affected their
+        food consumption levels compromising their nutritional health. It also 
+caused disruption in preventive health and nutrition services.
+
+Our campaign ‘Plate Half Full’ is an attempt towards enhancing education with adequate nutrition - while it is necessary to have 
+underprivileged children attend school, it is also just as important 
+to have them eat regular nutritious meals in a day. It focuses on improving the nutritional status of mothers, infants, and young 
+children to promote holistic development and help them reach their fullest potential.
+</div></div></div>
+                   
+                    </div>         
+
+                </body>
+              }
+              else if(Role==103)
+              {
+                
+                 <h2>Welcome @ViewBag.name</h2>
+                <body  style="background-image:linear-gradient(to right, #64b3f4, #c2e59c)">
+                <div class="container">
+
+                    <a class="btn btn-success" href="~/DashBoard/LogForm" >Donate_Logistics</a>
+                  
+                     <a class="btn btn-primary" href="~/DashBoard/AdminMsgView" style="margin-left:5%" >View_Message</a>
+                     
+                     <a class="btn btn-warning" href="~/DashBoard/Password"style="margin-left:5%" >Reset Password</a>
+
+                      <a class="btn btn-success" href="~/Login/FeedBack"style="margin-left:5%" >FeedBack</a>
+                    
+                     <br>
+                     <br>
+                     
+                     
+                     
+                     
+                     <div class="container">
+                     <div class="row">
+                     <div class="col-sm">
+                     <h4>Why Donation?</h4>
+                     <hr>
+                     Donation of regular meals to the needy…
+Around the globe ‘World Hunger Day’ is marked on May 28 and the stark reality is that for one-fourth of Indians, 
+from the poor, underprivileged, elderly and homeless sections of society, every day is a hunger day with no means 
+for adequate food or nutrition. Hunger leads to malnutrition which in turn leaves people susceptible to diseases. 
+The situation is particularly poignant in respect of children considering the fact that half of all kids younger 
+than three years old in India weigh too little for their age.
+
+While eradication of poverty remains the long-term goal, in the interim the short-term goal would be to harness 
+the resources of well-to-do Indians and feed the multitudes so that no adult or child goes to bed hungry. The
+corporate sector, as a part of their CSR initiatives, is doing its bit but much more needs to be done by 
+them as well as by NGOs and individuals.
+
+In order to serve as an inspiration, we present below in 'Whom Can You Contact' section work being done in various 
+parts of India by organizations and good-hearted individuals to feed the poor, needy, the underprivileged, the elderly
+and the homeless.
+
+Go ahead and donate food in your city…
+
+Many of us are pricked by the contrast between our own easy spending and the widespread deprivation around us, but have
+no idea how to help. You can move from quiet guilt to effective action by helping to combat hunger among deserving people.
+
+Either on your own or by forming a team of like-minded people you can arrange to cook simple meals and distribute them to
+the deneedy in your city. You can replicate similar work being done as described in 'Whom Can You Contact?' section below. 
+For guidance, you can even talk to the do-gooders whose phone numbers are listed.
+
+If a group is already active in your city, you can spare some time for the cause and join them as a volunteer. If that is 
+not possible you can consider donating them needed foodstuffs. Last but not the least, every person likes a pat on his back 
+and you should applaud the Good Samaritans for their selfless work.
+                     </div>
+                      <div class="col-sm">
+                       <h4>About Us</h4>
+                       <hr>
+                    The issue of malnutrition is of major concern for countries across the world. While it is a universal problem
+                    , children and women living in poverty are the worst affected by it. 
+
+        Due to the pandemic as a lot of people lost their means of livelihood and were further pushed into poverty, it affected their
+        food consumption levels compromising their nutritional health. It also 
+caused disruption in preventive health and nutrition services.
+
+Our campaign ‘Plate Half Full’ is an attempt towards enhancing education with adequate nutrition - while it is necessary to have 
+underprivileged children attend school, it is also just as important 
+to have them eat regular nutritious meals in a day. It focuses on improving the nutritional status of mothers, infants, and young 
+children to promote holistic development and help them reach their fullest potential.
+                     </div>
+                     
+                     </div>
+                     </div>
+                    
+                 </div>     
+                    
+                </body>
+              }
+    }
+        catch
+        {
+        
+        }
+}

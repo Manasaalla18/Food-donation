@@ -1,0 +1,117 @@
+﻿@model FoodDonation.Models.UserMaster
+
+@{
+    ViewData["Title"] = "Signup";
+}
+
+
+<body style="background-image:linear-gradient(to right, #005aa7, #fffde4)">
+<h1>Signup</h1>
+
+
+<hr />
+<div class="d-flex justify-content-center" >
+    <div class="col-md-4">
+        <form asp-action="Signup">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DOB" class="control-label"></label>
+                <input asp-for="DOB" class="form-control" />
+                <span asp-validation-for="DOB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>              
+                 <select name="gender"  class="form-check" asp-for="Gender">
+                    <option value="male">Male</option>
+                    <option value="Female">Female</option> 
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactNumber" class="control-label"></label>
+                <input asp-for="ContactNumber" class="form-control" />
+                <span asp-validation-for="ContactNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailAddress" class="control-label"></label>
+                <input asp-for="EmailAddress" class="form-control" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+                 @if(ViewBag.Msg!=null&&ViewBag.Msg=="Already Exit")
+                {
+                    <span style="color:red;">UserId already Exits</span>
+                }
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+        <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>              
+                 <select name="Category"  class="form-check" asp-for="Category">
+                    <option value="User">User</option>
+                       
+                     <option value="Logistic Sponsor">Logistic Sponsor</option>                     
+                </select>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-success" />
+            </div>
+            <br>
+            <div class="container">
+    <a href="~/Login/Login" class="btn btn-info">Click here to Login</a>
+</div>
+
+        </form>
+    </div>
+</div>
+
+</body>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+@{
+    try
+    {
+        if(TempData["status"]!=null)
+        {
+            if (TempData["status"] == "1")
+            {
+                <script>
+                    swal("Your Signup is Successfull!", "Please Login!", "success");
+                </script>
+            }
+            else
+            {
+                 <script>
+                    swal("Unable to Signup!", "Please Try Again!", "error");
+                </script>
+            }
+        }
+    }
+    catch
+    {
+        
+    }
+}

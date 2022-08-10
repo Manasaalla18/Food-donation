@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "AdminMsgView";
+}
+    
+<body style="background-image:linear-gradient(to right, #005aa7, #fffde4)">
+<h2>Admin_Messages</h2>
+<hr>
+<div class="d-flex justify-content-center">
+    <table class="table table-bordered table-hover">
+        <tr class="bg-success text-white">           
+            <th>RequestId</th>  
+             <th>Message</th>
+          </tr>
+ @{
+            try
+            {
+                    foreach(var item in ViewBag.msgs)
+                    {
+                        <tr>
+                        <td>@item.RequestId</td>  
+                        <td>@item.Message</td>  
+                        </tr>
+                    }
+                
+            }
+            catch
+            {
+                
+            }
+        }
+    </table>
+</div> 
+</body>

@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "Logistic_Donation_Requests";
+}
+<body style="background-image:linear-gradient(to right, #005aa7, #fffde4)">
+<h2>Logistic_Donation_Requests</h2>
+<hr>
+<div class="d-flex justify-content-center">
+    <table class="table table-bordered table-hover">
+        <tr class="bg-success text-white">
+            <th>UserId</th>  
+             <th>Name</th>
+            <th>Vechical Number</th>           
+            <th>Phone Number</th> 
+            <th>Location</th> .
+            <th>Status</th>
+        </tr>
+        @{ 
+            try
+            {
+                foreach (var item in ViewBag.logistics)
+                {
+                    <tr>
+                        <td>@item.LogUserId</td>  
+                        <td>@item.Name</td>  
+                        <td>@item.vechicalNumber</td>  
+                        <td>@item.PhoneNumber</td>  
+                        <td>@item.location</td>  
+                        @if(@item.Status=="Accepted" ||@item.Status=="Rejected")
+                            {
+                               <td> @item.Status </td>
+                            }
+                            else
+                            {
+                         <td>
+                         <a href="~/DashBoard/AcceptLogistic?id=@item.LogUserId" class="btn btn-warning">Accept</a>
+
+                         <a href="~/DashBoard/RejectLogistic?id=@item.LogUserId" class="btn btn-danger" style="margin-left:3%">Reject</a>
+                        </td>
+                            }
+                    </tr>
+                   }
+                }
+            
+            catch
+            {
+
+            }
+        }
+    </table>
+</div>  
+</body>
+@TempData["msg1"]

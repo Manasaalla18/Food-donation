@@ -1,0 +1,82 @@
+﻿@{
+    ViewData["Title"] = "FoodRequestView";
+}
+ <body style="background-image:linear-gradient(to right, #005aa7, #fffde4)">
+<h2>Food_Requests</h2>
+<hr>
+<div class="d-flex justify-content-center">
+    <table class="table table-bordered table-hover">
+        <tr class="bg-success text-white">
+            
+            <th>RequestId</th> 
+            <th>UserId</th>
+             <th>Date</th>
+            <th>Location</th>  
+            <th>Quantity</th>           
+            <th>Occasion</th>  .
+            <th>Status</th>
+
+        
+ @{
+            try
+            {
+                    foreach(var item in ViewBag.Request)
+                    {
+                        <tr>
+                        
+                        <td>@item.FoodRequestId</td>  
+                        <td>@item.UserId</td>
+                        <td>@item.Date</td>  
+                         <td>@item.Locality</td>  
+                        <td>@item.Quantity</td>  
+                        <td>@item.Occasion</td>  
+          
+                        @if(@item.Status=="Accepted" ||@item.Status=="Rejected")
+                            {
+                               <td> @item.Status </td>
+                            }
+                            else
+                            {
+                         <td>
+                         <a href="~/Dashboard/AcceptRequest?id=@item.FoodRequestId" class="btn btn-warning">Accept</a>
+
+                         <a href="~/Dashboard/RejectRequest?id=@item.FoodRequestId" class="btn btn-danger" style="margin-left:3%">Reject</a>
+                        </td>
+                            }
+                        </tr>
+                    }
+                
+            }
+            catch
+            {
+                
+            }
+        }
+    </table>
+</div>  
+</body>
+@{
+    try
+    {
+        if(TempData["msg"]!=null)
+        {
+            if (TempData["msg"] == "0")
+            {
+                <script>
+                    swal("Requested!", "CheckStatus", "success");
+                </script>
+            }
+            else if(TempData["msg"]=="1")
+            {
+                 <script>
+                    swal("Already!", "CheckYourList", "Warning");
+                </script>
+            }
+          
+        }
+    }
+    catch
+    {
+        
+    }
+}

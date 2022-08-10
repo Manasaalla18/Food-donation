@@ -1,0 +1,78 @@
+﻿@model FoodDonation.Models.FeedBack
+
+@{
+    ViewData["Title"] = "FeedBack";
+}
+<body  style="background-image:linear-gradient(to right, #005aa7, #fffde4)">
+
+
+
+<h4 style="text-align:center">FeedBack</h4>
+<hr />
+<div class="d-flex justify-content-center">
+    <div class="col-md-4">
+        <form asp-action="FeedBack">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+           <div class="form-group">
+                <label asp-for="Q1" class="control-label">Rate Service</label>              
+                 <select name="Q1"  class="form-check" asp-for="Q1">
+                    <option value="1">1</option>
+                    <option value="2">2</option>    
+                     <option value="3">3</option> 
+                     <option value="4">4</option>    
+                     <option value="5">5</option> 
+                </select>
+                <span asp-validation-for="Q1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Q2" class="control-label">Rate Response</label>              
+                 <select name="Q2"  class="form-check" asp-for="Q2">
+                    <option value="1">1</option>
+                    <option value="2">2</option>    
+                     <option value="3">3</option> 
+                     <option value="4">4</option>    
+                     <option value="5">5</option> 
+                </select>
+                <span asp-validation-for="Q2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Q3" class="control-label">Rate OverAll Performance</label>              
+                 <select name="Q3"  class="form-check" asp-for="Q3">
+                    <option value="1">1</option>
+                    <option value="2">2</option>    
+                     <option value="3">3</option> 
+                     <option value="4">4</option>    
+                     <option value="5">5</option> 
+                </select>
+                <span asp-validation-for="Q3" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+
+@{
+    try
+    {
+        if(TempData["status1"]!=null)
+        {
+            if(TempData["status1"]=="1")
+            {
+                <script>swal("Good Job!", "Submitted Successfully", "success")</script>
+            }
+             else
+            {
+                <script>swal("Error!", "Not Submitted ", "error")</script>
+            }
+        }
+    }
+    catch
+    {
+        
+    }
+}

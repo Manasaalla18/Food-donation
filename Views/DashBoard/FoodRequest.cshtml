@@ -1,0 +1,72 @@
+﻿@model FoodDonation.Models.FoodRequest
+
+@{
+    ViewData["Title"] = "FoodRequest";
+}
+<body style="background-image:linear-gradient(to right, #005aa7, #fffde4)">
+<h1>Food_Request_Form</h1>
+
+
+<hr />
+<div class="d-flex justify-content-center" >
+    <div class="col-md-4">
+        <form asp-action="FoodRequest">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Locality" class="control-label"></label>
+                <input asp-for="Locality" class="form-control" />
+                <span asp-validation-for="Locality" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Occasion" class="control-label"></label>
+                <input asp-for="Occasion" class="form-control" />
+                <span asp-validation-for="Occasion" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+ 
+        </form>
+    </div>
+</div>
+</body>>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+@{
+    try
+    {
+        if(TempData["msg"]!=null)
+        {
+            if (TempData["msg"] == "1")
+            {
+                <script>
+                    swal("Food Requested successfull", "Please Login!", "success");
+                </script>
+            }
+            else if(TempData["msg"]=="0")
+            {
+                 <script>
+                    swal("Failed to Request", "Please Try Again!", "error");
+                </script>
+            }
+        }
+    }
+    catch
+    {
+        
+    }
+}

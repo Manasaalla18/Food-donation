@@ -1,0 +1,78 @@
+﻿@model FoodDonation.Models.Donate
+
+@{
+    ViewData["Title"] = "Donate";
+}
+
+<body style="background-image:linear-gradient(to right, #005aa7, #fffde4)">
+<h1 style="text-align:center">Donation_Form</h1>
+
+
+<hr />
+<div class="d-flex justify-content-center" >
+
+
+
+    <div class="col-md-4">
+        <form asp-action="Donate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Location" class="control-label"></label>
+                <input asp-for="Location" class="form-control" />
+                <span asp-validation-for="Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactNumber" class="control-label"></label>
+                <input asp-for="ContactNumber" class="form-control" />
+                <span asp-validation-for="ContactNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PurposeOfDonation" class="control-label"></label>
+                <input asp-for="PurposeOfDonation" class="form-control" />
+                <span asp-validation-for="PurposeOfDonation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoOfServing" class="control-label"></label>
+                <input asp-for="NoOfServing" class="form-control" />
+                <span asp-validation-for="NoOfServing" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Donate" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+    <br>
+  
+</div>
+</body>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+@{
+    try
+    {
+        if(TempData["status1"]!=null)
+        {
+            if(TempData["status1"]=="1")
+            {
+                <script>swal("Good job!", "Donate Successfully", "success")</script>
+            }
+             else
+            {
+                <script>swal("Error!", " ", "error")</script>
+            }
+        }
+    }
+    catch
+    {
+        
+    }
+}

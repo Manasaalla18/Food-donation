@@ -1,0 +1,65 @@
+﻿@model IEnumerable<FoodDonation.Models.Donate>
+@{
+    ViewData["Title"] = "DonarRequests";
+}
+
+<body style="background-image:linear-gradient(to right, #005aa7, #fffde4)">
+<h2>Donation_Requests</h2>
+<hr>
+<div class="d-flex justify-content-center">
+    <table class="table table-bordered table-hover">
+        <tr class="bg-success text-white">
+            <th>Id</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>ContactNumber</th>
+            <th>Purpose</th>
+            <th>Servings</th>
+            <th>RequestID</th>
+            <th>Status</th>
+        </tr>
+        @{
+            try
+            {
+                
+            
+          foreach(var x in ViewBag.Donation)
+        {
+            <tr>
+                <td>@x.UserId</td>
+                 <td>@x.Name</td>
+                  <td>@x.Location</td>
+                  <td>@x.ContactNumber</td>
+                   <td>@x.PurposeOfDonation </td>
+                     <td>@x.NoOfServing  </td>
+                        <td>@x.RequestID</td>
+                    
+                     @if(@x.Status=="Accepted" ||@x.Status=="Rejected")
+                            {
+                               <td> @x.Status </td>
+                            }
+                            else
+                            {
+                                <td>
+                            <a href="~/DashBoard/Accept?id=@x.RequestID" class="btn btn-warning">Accept</a>
+
+                         <a href="~/DashBoard/Reject?id=@x.RequestID" class="btn btn-danger" style="margin-left:3%">Reject</a>
+                        </td>
+                            }
+                        </tr>
+                        
+                }
+            }
+            catch
+            {
+                
+            }
+            }
+            </table>
+               
+                  
+</div>
+
+ 
+
+</body>

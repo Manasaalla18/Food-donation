@@ -1,0 +1,109 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FoodDonation</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Food_Donation.styles.css" asp-append-version="true" />
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-primary bg-light border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FoodDonation</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    @{
+                        try{
+                           var Role= HttpContextAccessor.HttpContext.Session.GetInt32("Role");
+                            if(Role==1)
+                            {
+                                <ul class="nav nav-tabs" id="mytab" role="tab">
+                                  <li class="nav-item">
+                                <a class="nav-link" id="home-tab" data-toggle="tab" role="tab" asp-area="" asp-controller="DashBoard" asp-action="Index">Home</a>
+                                </li>
+                                 <li class="nav-item">
+                                <a class="nav-link" id="View_Donations-tab" data-toggle="tab" role="tab" asp-area="" asp-controller="DashBoard" asp-action="ViewReq">View_Donations</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link" id="home-tab" data-toggle="tab" role="tab" asp-area="" asp-controller="DashBoard" asp-action="ViewAllFoodRequest">View_Food_Requests </a>
+                                </li>                         
+                                 <li class="nav-item">
+                                <a class="nav-link" id="home-tab" data-toggle="tab" role="tab" asp-area="" asp-controller="DashBoard" asp-action="LogView">View_Logistic_Doantions </a>
+                                </li>  
+                                 <li class="nav-item">
+                                <a class="nav-link" id="home-tab" data-toggle="tab" role="tab" asp-area="" asp-controller="DashBoard" asp-action="Logout">Logout</a>
+                                </ul>
+                            }
+                            else if(Role==101)
+                            {
+                                <ul class="nav nav-tabs" id="mytab" role="tablist">
+                                 <li class="nav-item">
+                                <a class="nav-link " id="home-tab" data-toggle="tab" role="tab" asp-area="" asp-controller="DashBoard" asp-action="Index">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                <a class="nav-link " id="home-tab" data-toggle="tab" role="tab" asp-area="" asp-controller="DashBoard" asp-action="ViewReq">My_Donations</a>
+                                </li>
+                                 <li class="nav-item">
+                                <a class="nav-link" id="home-tab" data-toggle="tab" role="tab" asp-area="" asp-controller="DashBoard" asp-action="ViewAllFoodRequest">Food_Requests</a>
+                                </li>  
+                                <li class="nav-item">
+                                <a class="nav-link " id="home-tab" data-toggle="tab" role="tab" asp-area="" asp-controller="DashBoard" asp-action="FoodRequestView">My_Food_Requests</a>
+                                </li>
+                                <li>
+                                <a class="nav-link" id="home-tab" data-toggle="tab" role="tab" asp-area="" asp-controller="DashBoard" asp-action="Logout">Logout</a>
+                                </li>
+                                </ul>
+                            }
+
+                              if(Role==103)
+                            {
+                                <ul class="nav nav-tabs" id="mytab" role="tablist">
+                                 <li class="nav-item">
+                                <a class="nav-link " id="home-tab" data-toggle="tab" role="tab" asp-area="" asp-controller="DashBoard" asp-action="Index">Home</a>
+                                </li>
+                                  <li class="nav-item">
+                                <a class="nav-link" id="home-tab" data-toggle="tab" role="tab" asp-area="" asp-controller="DashBoard" asp-action="LogView">My_Logistic_Donations</a>
+                                </li> 
+                                 <li class="nav-item">
+                                <a class="nav-link" id="home-tab" data-toggle="tab" role="tab" asp-area="" asp-controller="DashBoard" asp-action="Logout">Logout</a>
+                                </ul>
+                            }
+                        }
+                        catch
+                        {
+                            
+                        }
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-dark">
+      <div class="container">
+            <p >For Any Queries-</p>
+               <p>Contact Number-9381961439 </p>  
+           <p> Email-maneshvk18@gmail.com</p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

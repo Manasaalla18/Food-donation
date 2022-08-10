@@ -1,0 +1,70 @@
+﻿@model FoodDonation.Models.AdminMsg
+
+@{
+    ViewData["Title"] = "AdminMsg";
+}
+
+<body style="background-image:linear-gradient(to right, #005aa7, #fffde4)">
+<h1 style="text-align:center">Message</h1>
+
+
+
+<div class="d-flex justify-content-center" >
+<hr />
+    <div class="col-md-4">
+        <form asp-action="AdminMsg">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="DonarUserId" class="control-label"></label>
+                <input asp-for="DonarUserId" class="form-control" />
+                <span asp-validation-for="DonarUserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LogisticUserId" class="control-label"></label>
+                <input asp-for="LogisticUserId" class="form-control" />
+                <span asp-validation-for="LogisticUserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message" class="control-label"></label>
+                <input asp-for="Message" class="form-control" />
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+            </br>
+            <div class="form-group">
+                <input type="submit" value="Send" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+@{
+    try
+    {
+        if(TempData["msg"]!=null)
+        {
+            if (TempData["msg"] == "1")
+            {
+                <script>
+                    swal("Requested!", "CheckStatus", "success");
+                </script>
+            }
+           
+            else
+            {
+                 <script>
+                    swal("Unable to Request!", "Please Try Again!", "error");
+                </script>
+            }
+        }
+    }
+    catch
+    {
+        
+    }
+}

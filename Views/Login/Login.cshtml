@@ -1,0 +1,67 @@
+﻿@model FoodDonation.Models.LoginModel
+
+@{
+    ViewData["Title"] = "Login";
+}
+<body style="background-image:linear-gradient(to right, #005aa7, #fffde4)">
+
+
+<h1 style=text-align:center>Login</h1>
+
+<hr />
+<div class="d-flex justify-content-center"  >
+    <div class="col-md-4">
+        <form asp-action="Login">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div><br>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-info" />
+            </div>
+            <br>
+            <div class="container">
+    <a href="~/Login/Signup" class="btn btn-success"->SignUp/Register</a>
+</div>
+
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+
+
+@{
+    try
+    {
+        if(TempData["msg"]!=null)
+        {
+            if(TempData["msg"]=="1")
+            {
+                <script>swal("Good job!", "Login Successfully", "success")</script>
+            }
+             else
+            {
+                <script>swal("Error!", "Incorrect UserId/Password", "error")</script>
+            }
+        }
+    }
+    catch
+    {
+        
+    }
+}
+</body>

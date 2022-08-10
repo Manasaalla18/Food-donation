@@ -1,0 +1,83 @@
+﻿@model FoodDonation.Models.LogisticModel
+
+@{
+    ViewData["Title"] = "LogForm";
+}
+
+
+<body style="background-image:linear-gradient(to right, #005aa7, #fffde4)">
+<h1 style="text-align:center">Logistic_Donation_Form</h1>
+
+
+
+<div class="d-flex justify-content-center" >
+<hr />
+
+    <div class="col-md-4">
+        <form asp-action="LogForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="vechicalNumber" class="control-label"></label>
+                <input asp-for="vechicalNumber" class="form-control" />
+                <span asp-validation-for="vechicalNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="location" class="control-label"></label>
+                <input asp-for="location" class="form-control" />
+                <span asp-validation-for="location" class="text-danger"></span>
+            </div>
+           <br>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+</div>
+</body>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+@{
+    try
+    {
+        if(TempData["msg"]!=null)
+        {
+            if (TempData["msg"] == "1")
+            {
+                <script>
+                    swal("Requested!", "CheckStatus", "success");
+                </script>
+            }
+            else if(TempData["msg"]=="2")
+            {
+                 <script>
+                    swal("Already!", "CheckYourList", "Warning");
+                </script>
+            }
+            else
+            {
+                 <script>
+                    swal("Unable to Request!", "Please Try Again!", "error");
+                </script>
+            }
+        }
+    }
+    catch
+    {
+        
+    }
+}
